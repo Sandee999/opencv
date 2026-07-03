@@ -12,20 +12,20 @@ Learn the OpenCV image data model by loading an image, inspecting its properties
 2. Saved `input/chelsea.png` as `output/chelsea.png` using `cv2.imwrite()`.
 3. Converted the image from BGR to grayscale and saved it as `output/chelsea_gray.png`.
 4. Printed:
-   - Shape : (300, 451, 3)
-   - Data Type : uint8
-   - Minimum Pixel Value : 0
-   - Maximum Pixel Value : 255
+   - Shape : (300, 451, 3) *(height, width, channels )*
+   - Data Type : uint8  *(each pixel value occupies 8 bits)*
+   - Numerical value of each pixel ranges between 0–255
 5. Compared BGR, RGB and Grayscale using Matplotlib.
 6. Saved the comparison figure as `output/1_channels.png`.
 
 
 ## BGR vs RGB Observation
 
-When the original OpenCV image is displayed directly using Matplotlib, the colors appear incorrect because OpenCV stores color channels in **Blue-Green-Red (BGR)** order, while Matplotlib expects **Red-Green-Blue (RGB)** order.
+OpenCV stores color images in **Blue-Green-Red (BGR)** channel order, whereas Matplotlib expects images in **Red-Green-Blue (RGB)** order.
 
-For the Chelsea cat image, this causes the cat's warm orange-brown fur to appear bluish or cyan-tinted, making the overall image look unnatural. After converting the image to RGB using `cv2.cvtColor()`, the fur returns to its natural orange-brown appearance, and the image displays correctly.
+When a BGR image is displayed directly using `matplotlib.pyplot.imshow()`, the red and blue channels are interpreted incorrectly, causing the colors to appear unnatural. In the Chelsea cat image, the cat's orange-brown fur appears bluish or cyan-tinted.
 
+After converting the image from BGR to RGB using `cv2.cvtColor(img, cv2.COLOR_BGR2RGB)`, the channel order is corrected, and the image is displayed with its natural colors.
 
 ## Files Produced
 
