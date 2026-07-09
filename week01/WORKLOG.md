@@ -87,3 +87,31 @@ The generated masks successfully isolated the red circle, green square, and blue
 - `output/3_hsv.png`
 - `output/4_masks.png`
 - `WORKLOG.md`
+
+# Week 01 - Task 3
+
+## Objective
+
+Learn safe image arithmetic in OpenCV by increasing image brightness using saturated addition instead of raw NumPy arithmetic.
+
+## Steps Performed
+
+1. Loaded `input/chelsea.jpg` using `cv2.imread()`.
+2. Created a constant image with value *50* for every pixel using NumPy.
+3. Increased brightness using `cv2.add()` to perform **saturated arithmetic**, preventing overflow.
+4. Displayed the brighter image using Matplotlib after converting the image from BGR to RGB.
+5. Saved the result as `output/6_brighter.png`.
+6. Performed numeric verification:
+   - Confirmed the mean pixel intensity is greater than the original image.
+   - Confirmed the maximum pixel value does not exceed **255**.
+   - Used assertions to validate both conditions.
+
+## Observation
+
+`cv2.add()` performs **saturated addition**, meaning any pixel value that exceeds 255 is clipped to 255 instead of wrapping around. This safely increases image brightness while preserving valid pixel intensities. In contrast, using raw NumPy addition (`+`) on `uint8` images causes values above 255 to wrap around modulo 256, producing incorrect and potentially darker pixels.
+
+## Files Produced
+
+- `task03.ipynb`
+- `output/6_brighter.png`
+- `WORKLOG.md`
